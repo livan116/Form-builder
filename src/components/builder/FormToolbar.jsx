@@ -14,6 +14,14 @@ function FormToolbar() {
   if (!currentFormId || !forms[currentFormId]) return null
   
   const currentForm = forms[currentFormId]
+
+  // Generate a sharable link for the current form
+  const shareableLink = `${window.location.origin}/form/${currentFormId}`
+
+  // Copy link to clipboard
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(shareableLink)
+  }
   
   const handleTitleChange = (e) => {
     dispatch(updateFormTitle(e.target.value))
